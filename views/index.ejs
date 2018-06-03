@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Smartbot</title>
+	<link rel="stylesheet" href="./stylesheets/styles.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+	<div class="nav">
+			<li><a href="/index.html">Profile</a></li>
+			<li><a href="#">Projects</a>
+				<ul>
+					<a href="#">History</a>
+					<a href="#">Currents</a>
+				</ul>
+			</li>
+			<li><a href="#">Deparments</a>
+				<ul>
+					<a href="#">Human Resources</a>
+					<a href="#">Financing</a>
+					<a href="#">Marketing</a>
+				</ul>
+			</li>
+			<li><a href="#">Schedule</a>
+				<ul>
+					<a href="#">See schedule</a>
+					<a href="#">Request a change</a>
+				</ul>
+			</li>
+			<li><a href="#">Questions</a></li>
+			<li><span class = "left"><a href = "#">LogIn</a></span></li>
+		</ul>
+	</div>
+
+	<div id = "cover-page">
+		<img src = "./images/mountain.jpg" alt = "company" width = "100%">
+	</div>
+
+	<div class = "starting">
+		<h1><br>Hi, Gerry</h1>
+	</div>
+
+
+	<div class = "oval_pic">
+		<img src = "images/programmer.png" alt = "Programmer">
+	</div>
+
+	<div class = "col-25">
+		<div class = "presentation">
+			<h3>This is Smartbot</h3>
+			<p>Just ask me anything related with your job and I will find the best answer for you. If you have financing problems, if you want to take some holidays or even request something to another department, this is the right place! :) let's do it!</p>
+		</div>
+	</div>
+
+
+	<div class = "col-75">
+		<div class = "conversation">
+			<form  method="post">
+				<div class = "row">
+					<p class = "bot">What is your question, Gerry?</p>
+				</div>
+				<div id="contenedor" class= "row">
+					<!-- <input type = "text" id="answer" name ="answer2"> -->
+					<input type= "text" id="main" name="message" placeholder= "tell me">
+					<input type= "button" value= "Send message" onclick="evento()">
+ <div class="container">
+					<textarea id = "textArea" rows="17" cols="100">
+
+					</textarea>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+<footer>Made by Smartbot</footer>
+
+<script type="text/javascript">
+	function evento(){
+		 var message = $('#main').val();
+		 var urlApp;
+     $('#main').val('');
+			 urlApp = '/users/'+message;
+		 $.ajax({
+			 url: urlApp
+		 }).then(function(data){
+			 if(data == 'Sorry, can you please repeat that?'){
+				 data = data + ' or call human resources (enter "call")';
+			 }
+			 $('#textArea').html(data);
+		 });
+	}
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+</body>
+</html>
